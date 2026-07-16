@@ -304,31 +304,7 @@ Farmer Result
 
 ---
 
-# 📸 Screenshots
 
-## 🏠 Home Page
-
-> Add screenshot here
-
----
-
-## 💬 AI Chat
-
-> Add screenshot here
-
----
-
-## 🌿 Disease Detection
-
-> Add screenshot here
-
----
-
-## 📚 Swagger API
-
-> Add screenshot here
-
----
 
 # 🎯 Future Scope
 
