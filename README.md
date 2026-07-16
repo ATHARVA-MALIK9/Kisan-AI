@@ -293,7 +293,9 @@ GitHub:
 https://github.com/ATHARVA-MALIK9
 
 LinkedIn:
-(Add your LinkedIn URL)
+(www.linkedin.com/in/
+atharva-malik-864769384
+)
 
 ---
 
