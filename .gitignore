@@ -1,0 +1,102 @@
+# ===========================
+# Python
+# ===========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ===========================
+# Virtual Environment
+# ===========================
+
+.venv/
+venv/
+env/
+
+# ===========================
+# Environment Variables
+# ===========================
+
+.env
+
+# ===========================
+# VS Code
+# ===========================
+
+.vscode/
+
+# ===========================
+# Python Cache
+# ===========================
+
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# ===========================
+# Jupyter
+# ===========================
+
+.ipynb_checkpoints/
+
+# ===========================
+# Uploaded Images
+# ===========================
+
+backend/uploads/
+
+# ===========================
+# Training Dataset
+# ===========================
+
+backend/dataset/
+
+# ===========================
+# Training Outputs
+# (Ignore only if generated)
+# ===========================
+
+backend/training/runs/
+backend/training/logs/
+
+# ===========================
+# Operating System Files
+# ===========================
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ===========================
+# Build Files
+# ===========================
+
+dist/
+build/
+
+# ===========================
+# IDE
+# ===========================
+
+.idea/
+
+# ===========================
+# Temporary Files
+# ===========================
+
+*.tmp
+*.log
+
+# ===========================
+# Keep Trained Model
+# ===========================
+!backend/models/
+!backend/models/crop_disease_model.pth
+
+# ===========================
+# Keep Knowledge Base
+# (Remove these two lines if you don't want PDFs on GitHub)
+# ===========================
+!knowledge_base/
+!knowledge_base/**

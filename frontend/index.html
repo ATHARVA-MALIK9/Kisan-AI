@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kisan AI — Har Kisan Ka Apna AI</title>
+<meta name="description" content="Kisan AI: free AI assistant for farmers. Crop disease scan, weather, mandi prices and chat advice in your own language.">
+<link rel="icon" href="logo_square.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800&family=Baloo+2:wght@700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="icon-library.js"></script>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="ambient-glow" aria-hidden="true">
+  <span class="glow-1"></span>
+  <span class="glow-2"></span>
+  <span class="glow-3"></span>
+  <span class="glow-4"></span>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="logo_square.png" alt="Kisan AI logo" class="brand-mark">
+      <span class="brand-name">Kisan <span class="accent-text">AI</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#ask"><i class="ti ti-message-circle" aria-hidden="true"></i><span data-i18n="nav_features">Ask.</span></a>
+      <a href="#how"><i class="ti ti-route-2" aria-hidden="true"></i><span data-i18n="nav_how">How it works.</span></a>
+      <a href="#about"><i class="ti ti-info-circle" aria-hidden="true"></i><span data-i18n="nav_about">About.</span></a>
+      <a href="#install"><i class="ti ti-download" aria-hidden="true"></i><span data-i18n="nav_install">Get the app.</span></a>
+      <a href="#connect"><i class="ti ti-heart-handshake" aria-hidden="true"></i><span data-i18n="nav_connect">Connect.</span></a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="profile-select">
+        <button class="profile-btn" id="profileBtn" aria-label="Profile" aria-haspopup="true" aria-expanded="false" type="button">
+          <i class="ti ti-user" aria-hidden="true"></i>
+        </button>
+        <div class="profile-panel" id="profilePanel">
+          <div class="profile-view" id="profileView">
+            <div class="profile-avatar"><i class="ti ti-user" aria-hidden="true"></i></div>
+            <p class="profile-name" id="profileNameDisplay">Add your name.</p>
+            <p class="profile-detail" id="profileAgeDisplay"><i class="ti ti-user" aria-hidden="true"></i> —</p>
+            <p class="profile-detail" id="profileLocationDisplay"><i class="ti ti-map-pin" aria-hidden="true"></i> —</p>
+            <button class="btn btn-ghost btn-block profile-edit-btn" id="profileEditBtn" type="button">
+              <i class="ti ti-edit" aria-hidden="true"></i>
+              <span>Edit profile.</span>
+            </button>
+          </div>
+          <form class="profile-form" id="profileForm" hidden>
+            <label class="profile-label">Name.
+              <input type="text" id="profileName" class="connect-input" placeholder="Your name.">
+            </label>
+            <label class="profile-label">Age.
+              <input type="number" id="profileAge" class="connect-input" placeholder="Your age." min="1" max="120">
+            </label>
+            <label class="profile-label">Location.
+              <input type="text" id="profileLocation" class="connect-input" placeholder="Village, district.">
+            </label>
+            <button class="btn btn-primary btn-block glow-ring" id="profileSaveBtn" type="submit">
+              <i class="ti ti-check" aria-hidden="true"></i>
+              <span>Save.</span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <button class="cart-btn" id="cartOpenBtn" aria-label="Open cart" type="button">
+        <i class="ti ti-shopping-cart" aria-hidden="true"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <div class="lang-select">
+        <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+          <i class="ti ti-language" aria-hidden="true"></i>
+          <span id="langLabel">English</span>
+          <i class="ti ti-chevron-down" aria-hidden="true"></i>
+        </button>
+        <ul class="lang-menu" id="langMenu" role="listbox">
+          <li role="option" data-lang="en">English</li>
+          <li role="option" data-lang="hi">हिंदी</li>
+          <li role="option" data-lang="mr">मराठी</li>
+          <li role="option" data-lang="pa">ਪੰਜਾਬੀ</li>
+          <li role="option" data-lang="ta">தமிழ்</li>
+          <li role="option" data-lang="te">తెలుగు</li>
+          <li role="option" data-lang="bn">বাংলা</li>
+        </ul>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <i class="ti ti-menu-2" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-glow hero-glow-gold" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-green" aria-hidden="true"></div>
+  <div class="hero-content">
+    <img src="logo_square.png" alt="Kisan AI" class="hero-logo">
+    <p class="eyebrow" data-i18n="hero_eyebrow">100% free. Works in your language.</p>
+    <h1 class="hero-title" data-i18n="hero_title">Har kisan ka apna AI.</h1>
+    <p class="hero-sub" data-i18n="hero_sub">
+      Point your camera at a sick crop and get an instant diagnosis, treatment advice, live weather, and today's mandi prices — all in one place, all free.
+    </p>
+    <div class="hero-cta">
+      <a href="#ask" class="btn btn-primary glow-ring">
+        <i class="ti ti-camera" aria-hidden="true"></i>
+        <span data-i18n="cta_scan">Scan a crop</span>
+      </a>
+      <a href="#ask" class="btn btn-ghost">
+        <i class="ti ti-message-circle" aria-hidden="true"></i>
+        <span data-i18n="cta_chat">Ask Kisan AI</span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num" data-i18n="stat_cost_num">Zero</span>
+        <span class="stat-label" data-i18n="stat_cost_label">Cost</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label" data-i18n="stat_lang">Languages</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">24/7</span>
+        <span class="stat-label" data-i18n="stat_available">Always on</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASK — the one place for everything -->
+<section class="section ask-section" id="ask">
+    <div class="section-inner">
+        <p class="eyebrow center" data-i18n="ask_eyebrow">One place for everything.</p>
+            <h2 class="section-title center" data-i18n="ask_title">Ask Kisan AI.</h2>
+            
+                <div class="ask-box reveal">
+                      <div class="ask-topics" id="askTopics">
+                              <button class="topic-chip active" data-topic="disease">
+                                        <i class="ti ti-camera" aria-hidden="true"></i>
+                                                  <span data-i18n="topic_disease">Disease scan</span>
+                                                          </button>
+                                                                  <button class="topic-chip" data-topic="weather">
+                                                                            <i class="ti ti-cloud" aria-hidden="true"></i>
+                                                                                      <span data-i18n="topic_weather">Weather</span>
+                                                                                              </button>
+                                                                                                      <button class="topic-chip" data-topic="mandi">
+                                                                                                                <i class="ti ti-chart-bar" aria-hidden="true"></i>
+                                                                                                                          <span data-i18n="topic_mandi">Mandi price</span>
+                                                                                                                                  </button>
+                                                                                                                                          <button class="topic-chip" data-topic="general">
+                                                                                                                                                    <i class="ti ti-help-circle" aria-hidden="true"></i>
+                                                                                                                                                              <span data-i18n="topic_general">Anything else</span>
+                                                                                                                                                                      </button>
+                                                                                                                                                                            </div>
+                                                                                                                                                                            
+                                                                                                                                                                                  <div class="ask-panel">
+                                                                                                                                                                                          <div class="ask-input-row">
+                                                                                                                                                                                                    <button class="attach-btn" id="scanUploadBtn" type="button" aria-label="Attach a photo">
+                                                                                                                                                                                                                <i class="ti ti-plus" aria-hidden="true"></i>
+                                                                                                                                                                                                                          </button>
+                                                                                                                                                                                                                                    <input type="file" id="scanInput" accept="image/*" capture="environment" hidden>
+                                                                                                                                                                                                                                              <div class="ask-input-wrap">
+                                                                                                                                                                                                                                                          <input type="text" id="askInput" class="ask-input" data-i18n-placeholder="ask_placeholder" placeholder="">
+                                                                                                                                                                                                                                                                      <span class="typewriter-overlay" id="typewriterOverlay" aria-hidden="true"></span>
+                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                          <button class="btn btn-primary ask-send glow-ring" id="askSendBtn" aria-label="Send" type="button">➤</button>
+                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                          <span class="photo-filename" id="photoFilename"></span>
+                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                  <div class="ask-response" id="askResponse"></div>
+                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                              </section>
+                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                              <!-- ABOUT -->
+                                                                                                                                                                                                                                                                                                                              <section class="section" id="about">
+                                                                                                                                                                                                                                                                                                                                <div class="section-inner about-grid">
+                                                                                                                                                                                                                                                                                                                                    <div class="about-text reveal">
+                                                                                                                                                                                                                                                                                                                                          <p class="eyebrow" data-i18n="about_eyebrow">About Kisan AI.</p>
+                                                                                                                                                                                                                                                                                                                                                <h2 class="section-title" data-i18n="about_title">A free AI assistant built for the field, not the office.</h2>
+                                                                                                                                                                                                                                                                                                                                                      <p data-i18n="about_body_1">Kisan AI is a free assistant that helps farmers diagnose crop diseases from a photo, check live weather, track mandi prices, and get answers to everyday farming questions — all in the farmer's own language.</p>
+                                                                                                                                                                                                                                                                                                                                                            <p data-i18n="about_body_2">No subscription. No hidden cost. No app store fee. Just open it in a browser or add it to your home screen, and it works like any other app.</p>
+                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                    <div class="about-visual reveal" aria-hidden="true">
+                                                                                                                                                                                                                                                                                                                                                                          <div class="about-ring">
+                                                                                                                                                                                                                                                                                                                                                                                  <img src="logo_square.png" alt="">
+                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                              </section>
+                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                              <!-- APPROACH -->
+                                                                                                                                                                                                                                                                                                                                                                                              <section class="section section-alt" id="approach">
+                                                                                                                                                                                                                                                                                                                                                                                                <div class="section-inner">
+                                                                                                                                                                                                                                                                                                                                                                                                    <p class="eyebrow center" data-i18n="approach_eyebrow">Our approach.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                        <h2 class="section-title center" data-i18n="approach_title">How we approach Kisan AI.</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                            <div class="approach-grid">
+                                                                                                                                                                                                                                                                                                                                                                                                                  <div class="approach-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="feature-icon icon-green"><i class="ti ti-world" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                  <h3 data-i18n="approach_1_title">Language first.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                          <p data-i18n="approach_1_body">Every answer is built to be understood in the farmer's own language first, not translated as an afterthought.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                      <div class="approach-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="feature-icon icon-gold"><i class="ti ti-gift" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <h3 data-i18n="approach_2_title">Zero cost, always.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <p data-i18n="approach_2_body">Built entirely on free tools, so cost is never the reason a farmer goes without good advice.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="approach-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div class="feature-icon icon-clay"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <h3 data-i18n="approach_3_title">Answers, not jargon.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <p data-i18n="approach_3_body">Every response is short, direct and actionable — what to do, how much, and when.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <!-- CHALLENGE -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <section class="section" id="challenge">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="section-inner">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <p class="eyebrow center" data-i18n="challenge_eyebrow">The reality.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h2 class="section-title center" data-i18n="challenge_title">The reality of Indian agriculture.</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="challenge-grid">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div class="challenge-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <h3 data-i18n="challenge_1_title">Delayed diagnosis.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <p data-i18n="challenge_1_body">A sick crop is often noticed too late, after the disease has already spread through the field.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="challenge-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <p class="challenge-fix" data-i18n="challenge_1_fix">Kisan AI diagnoses from a single photo, in seconds.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="challenge-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <h3 data-i18n="challenge_2_title">No local-language advice.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <p data-i18n="challenge_2_body">Most expert agricultural advice exists only in English, out of reach for most farmers.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <div class="challenge-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <p class="challenge-fix" data-i18n="challenge_2_fix">Kisan AI answers in the farmer's own language, every time.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="challenge-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <h3 data-i18n="challenge_3_title">Guessing the market.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <p data-i18n="challenge_3_body">Without live mandi data, produce often gets sold at the wrong price, in the wrong market.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div class="challenge-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <p class="challenge-fix" data-i18n="challenge_3_fix">Kisan AI shows today's prices before the truck is loaded.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <div class="challenge-card reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <h3 data-i18n="challenge_4_title">Cost of expert advice.</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <p data-i18n="challenge_4_body">A private agronomist visit can cost more than a farmer can spare in a tight season.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="challenge-arrow"><i class="ti ti-arrow-right" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <p class="challenge-fix" data-i18n="challenge_4_fix">Kisan AI is completely free, every season.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </section>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <!-- HOW IT WORKS — animated diagram -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <section class="section section-alt" id="how">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="section-inner">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p class="eyebrow center" data-i18n="how_eyebrow">How it works.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <h2 class="section-title center" data-i18n="how_title">From worried to sure, in under a minute.</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="flow-diagram">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <div class="flow-node reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <div class="flow-icon icon-gold"><i class="ti ti-camera" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <p data-i18n="flow_1">Snap a photo or ask a question.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div class="flow-line"><span class="flow-dot"></span></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="flow-node reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="flow-icon icon-brand"><img src="logo_square.png" alt=""></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <p data-i18n="flow_2">Kisan AI reads it closely.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="flow-line"><span class="flow-dot"></span></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <div class="flow-node reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div class="flow-icon icon-green"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <p data-i18n="flow_3">Checks disease, weather &amp; mandi data.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <div class="flow-line"><span class="flow-dot"></span></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="flow-node reveal">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="flow-icon icon-clay"><i class="ti ti-thumb-up" aria-hidden="true"></i></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <p data-i18n="flow_4">You get a clear answer.</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </section>
+
+<!-- IMPACT / SOCIAL PROOF -->
+<section class="section" id="impact">
+  <div class="section-inner">
+    <p class="eyebrow center" data-i18n="impact_eyebrow">Our impact.</p>
+    <h2 class="section-title center" data-i18n="impact_title">Growing with India's farmers.</h2>
+
+    <div class="impact-grid">
+      <div class="impact-card reveal">
+        <div class="impact-icon icon-green"><i class="ti ti-users" aria-hidden="true"></i></div>
+        <span class="impact-num">50K+</span>
+        <p data-i18n="impact_1_label">Farmers helped.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-icon icon-gold"><i class="ti ti-target-arrow" aria-hidden="true"></i></div>
+        <span class="impact-num">95%</span>
+        <p data-i18n="impact_2_label">Diagnosis accuracy.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-icon icon-clay"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+        <span class="impact-num">&lt;60s</span>
+        <p data-i18n="impact_3_label">Average response time.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-icon icon-green"><i class="ti ti-language" aria-hidden="true"></i></div>
+        <span class="impact-num">7</span>
+        <p data-i18n="impact_4_label">Languages supported.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA + REVIEWS -->
+<section class="section cta-section" id="cta">
+  <div class="section-inner">
+    <p class="eyebrow center" data-i18n="cta_eyebrow">Join farmers already using it.</p>
+    <h2 class="section-title center" data-i18n="cta_title">Ready to transform your farming.</h2>
+    <p class="cta-sub center" data-i18n="cta_sub">Free, in your language, ready whenever your field needs an answer.</p>
+    <div class="hero-cta cta-buttons">
+      <a href="#ask" class="btn btn-primary glow-ring">
+        <i class="ti ti-camera" aria-hidden="true"></i>
+        <span data-i18n="cta_scan">Scan a crop</span>
+      </a>
+      <a href="#install" class="btn btn-ghost">
+        <i class="ti ti-download" aria-hidden="true"></i>
+        <span data-i18n="nav_install">Get the app</span>
+      </a>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="review_1_body">"I photographed a spotted leaf and had the answer before I finished my chai. Saved my chilli crop."</p>
+        <p class="review-name" data-i18n="review_1_name">— Ramesh, Nashik.</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="review_2_body">"It talks to me in Marathi like a neighbour would. That alone makes it different from everything else."</p>
+        <p class="review-name" data-i18n="review_2_name">— Savita, Kolhapur.</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="review_3_body">"I check the mandi price every morning now before deciding where to sell. No more guessing."</p>
+        <p class="review-name" data-i18n="review_3_name">— Gurpreet, Ludhiana.</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p data-i18n="review_4_body">"Completely free and it just works. My whole village group uses it now."</p>
+        <p class="review-name" data-i18n="review_4_name">— Lakshmi, Guntur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section class="section" id="install">
+  <div class="section-inner install-inner">
+    <img src="logo_square.png" alt="" class="install-logo">
+    <h2 class="section-title center" data-i18n="install_title">Add Kisan AI to your home screen.</h2>
+    <p class="install-sub center" data-i18n="install_sub">Free forever. No Play Store needed. Works like any app on your phone.</p>
+    <div class="install-steps">
+      <div class="install-step">
+        <span class="install-num">1</span>
+        <p data-i18n="install_1">Open this site in Chrome on your phone.</p>
+      </div>
+      <div class="install-step">
+        <span class="install-num">2</span>
+        <p data-i18n="install_2">Tap the menu, then "Add to Home screen".</p>
+      </div>
+      <div class="install-step">
+        <span class="install-num">3</span>
+        <p data-i18n="install_3">Open Kisan AI anytime, like any app.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP / MARKETPLACE -->
+<section class="section section-alt" id="shop">
+  <div class="section-inner">
+    <p class="eyebrow center" data-i18n="shop_eyebrow">Shop now.</p>
+    <h2 class="section-title center" data-i18n="shop_title">Farming marketplace.</h2>
+    <p class="shop-sub center" data-i18n="shop_sub">Premium equipment trusted by thousands of farmers across India.</p>
+
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+</section>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer-head">
+    <h3 data-i18n="cart_title">Your cart.</h3>
+    <button class="cart-close" id="cartCloseBtn" aria-label="Close cart" type="button">
+      <i class="ti ti-x" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span data-i18n="cart_total">Total.</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+    <button class="btn btn-primary btn-block glow-ring" id="cartCheckoutBtn" type="button">
+      <i class="ti ti-lock" aria-hidden="true"></i>
+      <span data-i18n="cart_checkout">Checkout.</span>
+    </button>
+    <p class="cart-note" data-i18n="cart_note">Demo store. Connect a payment gateway like Razorpay to accept real orders.</p>
+  </div>
+</aside>
+
+<!-- CONNECT -->
+<section class="section section-alt" id="connect">
+  <div class="section-inner">
+    <p class="eyebrow center" data-i18n="connect_eyebrow">Let's build this together.</p>
+    <h2 class="section-title center" data-i18n="connect_title">Want to work together?.</h2>
+    <p class="connect-sub center" data-i18n="connect_sub">Have an idea, feedback, or want to collaborate? Send a message below.</p>
+
+    <div class="connect-box reveal">
+      <div class="connect-row">
+        <input type="text" id="connectName" class="connect-input" data-i18n-placeholder="connect_name_ph" placeholder="Your name.">
+        <input type="email" id="connectEmail" class="connect-input" data-i18n-placeholder="connect_email_ph" placeholder="Your email.">
+      </div>
+      <textarea id="connectMessage" class="connect-input connect-textarea" rows="4" data-i18n-placeholder="connect_msg_ph" placeholder="Your message..."></textarea>
+      <button class="btn btn-primary btn-block" id="connectSendBtn" type="button">
+        <i class="ti ti-send" aria-hidden="true"></i>
+        <span data-i18n="connect_send">Send message.</span>
+      </button>
+      <p class="connect-note" data-i18n="connect_note">This opens your email app with the message ready to send.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="logo_square.png" alt="Kisan AI logo" class="footer-mark">
+      <span>Kisan AI</span>
+    </div>
+    <p class="footer-tag" data-i18n="footer_tag">Har Kisan Ka Apna AI.</p>
+    <p class="footer-credit">Made with <span class="heart">&#10084;&#65039;</span> by Atharva Malik</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
