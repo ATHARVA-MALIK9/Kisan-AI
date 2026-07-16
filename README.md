@@ -1,61 +1,127 @@
+<div align="center">
+
 # 🌾 Kisan AI
+
 ### AI-Powered Agriculture Assistant using Ollama, FastAPI, RAG & Computer Vision
 
-Kisan AI is an intelligent agriculture assistant designed to help farmers with crop-related queries and disease detection. The project combines a local Large Language Model (LLM) using **Ollama**, **Retrieval-Augmented Generation (RAG)** for agriculture knowledge, and **Computer Vision** using **EfficientNet-B0** to identify crop diseases from leaf images.
+![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi)
+![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black?style=for-the-badge)
+![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red?style=for-the-badge&logo=pytorch)
+![GitHub](https://img.shields.io/badge/Open%20Source-GitHub-success?style=for-the-badge&logo=github)
+
+**An AI-powered assistant that helps farmers using Local LLMs, Retrieval-Augmented Generation (RAG), and Deep Learning for crop disease detection.**
+
+⭐ If you found this project useful, consider starring the repository.
+
+</div>
 
 ---
 
-## 🚀 Features
+# 📌 Overview
 
-### 🤖 AI Agriculture Chatbot
-- Local AI assistant powered by Ollama
-- No external AI API required
+Kisan AI is a complete AI-powered agriculture assistant developed to support farmers by answering agriculture-related questions and detecting crop diseases from leaf images.
+
+Unlike traditional chatbot projects, Kisan AI combines **Large Language Models**, **Computer Vision**, and **Retrieval-Augmented Generation (RAG)** into a single application that works locally without relying on cloud AI APIs.
+
+---
+
+# ✨ Features
+
+## 🤖 AI Chat Assistant
+
+- Powered by **Ollama**
+- Local LLM inference
 - Farmer-friendly responses
 - Agriculture-focused knowledge
-
-### 📚 Retrieval-Augmented Generation (RAG)
-- PDF-based agricultural knowledge base
-- Context-aware answers
-- Semantic search for relevant information
-- Local vector database
-
-### 🌿 Crop Disease Detection
-- Upload leaf images
-- AI-powered disease prediction
-- EfficientNet-B0 image classification model
-- Confidence score for predictions
-
-### 🌍 User-Friendly Interface
-- Responsive modern UI
-- Image upload support
-- AI chat interface
-- Clean and intuitive design
+- No external AI API required
 
 ---
 
-# 🛠️ Tech Stack
+## 📚 Retrieval-Augmented Generation (RAG)
 
-## Frontend
-- HTML5
-- CSS3
-- JavaScript
+- Agricultural PDF knowledge base
+- Semantic document retrieval
+- Context-aware responses
+- Local vector search
 
-## Backend
-- FastAPI
-- Python
+---
 
-## AI & Machine Learning
-- Ollama
-- PyTorch
-- TIMM
-- EfficientNet-B0
-- Pillow
-- Torchvision
+## 🌿 Crop Disease Detection
 
-## RAG
-- Sentence Transformers
-- Vector Embeddings
-- Semantic Retrieval
+- Upload crop leaf images
+- EfficientNet-B0 classifier
+- AI disease prediction
+- Confidence score
+- Fast image inference
+
+---
+
+## 💻 Modern User Interface
+
+- Responsive design
+- Image upload support
+- AI chat interface
+- Clean and minimal UI
+
+---
+
+# 🧠 AI Architecture
+
+```text
+                Farmer
+
+                   │
+                   ▼
+
+          Ask Question / Upload Image
+
+                   │
+        ┌──────────┴──────────┐
+        │                     │
+        ▼                     ▼
+
+    AI Chat             Disease Detection
+
+        │                     │
+
+        ▼                     ▼
+
+   Ollama LLM         EfficientNet-B0
+
+        │
+
+        ▼
+
+Knowledge Retrieval (RAG)
+
+        │
+
+        ▼
+
+ Agricultural PDFs
+
+        │
+
+        ▼
+
+  Farmer-Friendly Answer
+```
+
+---
+
+# 🛠 Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Frontend | HTML, CSS, JavaScript |
+| Backend | FastAPI, Python |
+| LLM | Ollama |
+| Machine Learning | PyTorch, TIMM |
+| CNN Model | EfficientNet-B0 |
+| Image Processing | Pillow, Torchvision |
+| Retrieval | Sentence Transformers |
+| Version Control | Git & GitHub |
 
 ---
 
@@ -66,17 +132,19 @@ Kisan-AI
 │
 ├── backend
 │   ├── app
-│   │   ├── api
-│   │   ├── services
-│   │   ├── rag
-│   │   ├── llm
-│   │   ├── schemas
-│   │   └── database
+│   │
+│   ├── api
+│   ├── database
+│   ├── llm
+│   ├── rag
+│   ├── schemas
+│   ├── services
 │   │
 │   ├── models
 │   │   └── crop_disease_model.pth
 │   │
 │   ├── training
+│   │
 │   └── requirements.txt
 │
 ├── frontend
@@ -94,7 +162,7 @@ Kisan-AI
 
 ---
 
-# ⚙️ Installation
+# 🚀 Installation
 
 ## Clone Repository
 
@@ -112,13 +180,13 @@ cd Kisan-AI
 python -m venv .venv
 ```
 
-### Windows
+Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### Linux / Mac
+Linux / Mac
 
 ```bash
 source .venv/bin/activate
@@ -136,19 +204,17 @@ pip install -r requirements.txt
 
 ## Install Ollama
 
-Download and install Ollama from:
+Download Ollama from
 
 https://ollama.com/
 
-Pull the required model:
+Pull the model
 
 ```bash
 ollama pull llama3.2:3b
 ```
 
----
-
-## Start Ollama
+Start Ollama
 
 ```bash
 ollama serve
@@ -156,7 +222,7 @@ ollama serve
 
 ---
 
-## Run FastAPI Backend
+## Run Backend
 
 ```bash
 cd backend
@@ -164,13 +230,13 @@ cd backend
 python -m uvicorn app.main:app --reload
 ```
 
-Backend URL
+Open
 
 ```
 http://127.0.0.1:8000
 ```
 
-API Documentation
+Swagger
 
 ```
 http://127.0.0.1:8000/docs
@@ -184,121 +250,147 @@ Open the frontend using **Live Server** in VS Code.
 
 ---
 
-# 🧠 AI Components
+# 🌿 Disease Detection Model
 
-## Local LLM
+| Model | EfficientNet-B0 |
+|--------|-----------------|
+| Framework | PyTorch |
+| Task | Image Classification |
+| Input Size | 224 × 224 |
+| Dataset | Tomato Leaf Images |
 
-- Ollama
-- Llama 3.2 (3B)
-
----
-
-## Retrieval-Augmented Generation
-
-- PDF Knowledge Base
-- Semantic Search
-- Context Retrieval
-
----
-
-## Disease Detection
-
-Model:
-
-```
-EfficientNet-B0
-```
-
-Framework:
-
-```
-PyTorch
-```
-
-Prediction:
+Predicted Classes
 
 - Tomato Healthy
 - Tomato Late Blight
 
 ---
 
+# 📖 AI Workflow
+
+```text
+Leaf Image
+
+      │
+
+      ▼
+
+FastAPI Upload
+
+      │
+
+      ▼
+
+EfficientNet-B0
+
+      │
+
+      ▼
+
+Disease Prediction
+
+      │
+
+      ▼
+
+Confidence Score
+
+      │
+
+      ▼
+
+Farmer Result
+```
+
+---
+
 # 📸 Screenshots
 
-## Home Page
+## 🏠 Home Page
 
-> Add Screenshot Here
-
----
-
-## AI Chat
-
-> Add Screenshot Here
+> Add screenshot here
 
 ---
 
-## Disease Detection
+## 💬 AI Chat
 
-> Add Screenshot Here
-
----
-
-## API Documentation
-
-> Add Screenshot Here
+> Add screenshot here
 
 ---
 
-# 🎯 Future Improvements
+## 🌿 Disease Detection
 
-- Support additional crops
-- Voice interaction
+> Add screenshot here
+
+---
+
+## 📚 Swagger API
+
+> Add screenshot here
+
+---
+
+# 🎯 Future Scope
+
+- Support multiple crop types
+- Voice-based interaction
 - Weather integration
 - Fertilizer recommendation
 - Pest detection
-- Multi-language expansion
-- Mobile application
+- Farmer history
 - Database integration
-- Farmer history management
+- Mobile application
 
 ---
 
-# 📖 Learning Outcomes
+# 📚 Learning Outcomes
 
-This project helped in learning:
+Through this project I learned:
 
 - FastAPI
-- REST APIs
-- Retrieval-Augmented Generation (RAG)
+- REST API Development
+- Local LLM Deployment
 - Ollama
-- Local LLM deployment
-- Computer Vision
+- Retrieval-Augmented Generation
 - PyTorch
+- Deep Learning
 - Transfer Learning
 - EfficientNet
+- Computer Vision
 - Image Classification
 - Git & GitHub
 - Full Stack AI Development
 
 ---
 
-# 👨‍💻 Author
+# 👨‍💻 Developer
 
-**ATHARVA MALIK**
+## ATHARVA MALIK
 
-B.Tech CSE (AI & ML)
+**B.Tech CSE (AI & ML)**
 
-Aspiring AI Engineer | Data Analytics Enthusiast | Python Developer
+Aspiring AI Engineer • Data Analytics Enthusiast • Python Developer
 
-GitHub:
+### GitHub
+
 https://github.com/ATHARVA-MALIK9
 
-LinkedIn:
+### LinkedIn
+
 (www.linkedin.com/in/
 atharva-malik-864769384
 )
 
 ---
 
-# ⭐ If you like this project
+<div align="center">
 
-Please consider giving this repository a ⭐ on GitHub.
+## ⭐ Support
+
+If you found this project useful,
+
+please consider giving it a ⭐ on GitHub.
+
+Made with ❤️ using Python, FastAPI, Ollama & PyTorch
+
+</div>
